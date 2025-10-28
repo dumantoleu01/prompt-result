@@ -25,9 +25,20 @@ A professional Flutter application demonstrating **Clean Architecture** with **B
 Built with **Clean Architecture** principles:
 
 ```
-├── Domain Layer      → Business logic
-├── Data Layer        → API & repositories
-└── Presentation      → UI & state management
+├── Domain Layer (Business Logic)
+│   ├── Entities
+│   ├── Repositories (Interfaces)
+│   └── Use Cases
+│
+├── Data Layer (Implementation)
+│   ├── Data Sources (Mock API)
+│   ├── Models
+│   └── Repository Implementations
+│
+└── Presentation Layer (UI)
+    ├── BLoC (State Management)
+    ├── Pages (Screens)
+    └── Widgets (Reusable Components)
 ```
 
 ### Tech Stack
@@ -78,21 +89,51 @@ flutter analyze
 
 ```
 lib/
+├── main.dart                              # App entry point
+├── injection_container.dart               # Dependency injection
+│
 ├── core/
-│   ├── error/              # Error handling
-│   └── routing/            # Navigation config
-├── data/
-│   ├── datasources/        # Mock API
-│   ├── models/             # Data models
-│   └── repositories/       # Repository implementations
-├── domain/
-│   ├── entities/           # Business entities
-│   ├── repositories/       # Repository interfaces
-│   └── usecases/           # Business logic
-└── presentation/
-    ├── bloc/               # State management
-    ├── pages/              # App screens
-    └── widgets/            # Reusable components (9 widgets)
+│   ├── error/
+│   │   └── failures.dart                 # Error handling
+│   └── routing/
+│       └── app_router.dart               # Navigation config
+│
+├── domain/                                # Business Logic Layer
+│   ├── entities/
+│   │   └── generated_image.dart          # Core business entity
+│   ├── repositories/
+│   │   └── image_generator_repository.dart  # Repository interface
+│   └── usecases/
+│       └── generate_image.dart           # Business use case
+│
+├── data/                                  # Data Layer
+│   ├── datasources/
+│   │   └── image_generator_remote_data_source.dart  # Mock API
+│   ├── models/
+│   │   └── generated_image_model.dart    # Data model
+│   └── repositories/
+│       └── image_generator_repository_impl.dart  # Repository implementation
+│
+└── presentation/                          # Presentation Layer
+    ├── bloc/
+    │   ├── image_generator_bloc.dart     # BLoC logic
+    │   ├── image_generator_event.dart    # Events
+    │   └── image_generator_state.dart    # States
+    │
+    ├── pages/
+    │   ├── prompt_page.dart              # Prompt input screen
+    │   └── result_page.dart              # Result display screen
+    │
+    └── widgets/                           # Reusable UI components
+        ├── gradient_background.dart       # Gradient container
+        ├── app_header.dart                # App branding
+        ├── prompt_input_field.dart        # Text input field
+        ├── generate_button.dart           # Action button
+        ├── loading_state_widget.dart      # Animated loader
+        ├── error_state_widget.dart        # Error display
+        ├── generated_image_card.dart      # Image display card
+        ├── prompt_info_card.dart          # Prompt info display
+        └── result_actions_panel.dart      # Action buttons panel
 ```
 
 ## 🎨 UI Components
@@ -166,11 +207,17 @@ Test coverage includes:
 
 ## 📊 Statistics
 
-- **Files**: 14 Dart files
+- **Total Files**: 23 Dart files
+  - Core: 2 files (error, routing)
+  - Domain: 3 files (entities, repositories, usecases)
+  - Data: 3 files (datasources, models, repositories)
+  - Presentation: 14 files (bloc, pages, widgets)
+  - Infrastructure: 2 files (main, DI)
 - **Lines of Code**: ~800+
-- **Widgets**: 9 reusable components
+- **Reusable Widgets**: 9 components
 - **Architecture Layers**: 3 (Domain, Data, Presentation)
 - **Test Coverage**: All critical paths
+- **Code Quality**: 0 errors, 0 warnings
 
 ## 🔄 User Flow
 
