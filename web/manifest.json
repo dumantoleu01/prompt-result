@@ -1,11 +1,11 @@
 {
-    "name": "prompt_result",
-    "short_name": "prompt_result",
+    "name": "AI Image",
+    "short_name": "AI Image",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#00796B",
+    "theme_color": "#00796B",
+    "description": "AI Image Generator - Transform your ideas into stunning visuals",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

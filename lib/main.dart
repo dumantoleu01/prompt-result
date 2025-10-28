@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (_) => InjectionContainer.getBloc(),
       child: MaterialApp.router(
-        title: 'AI Image Generator',
+        title: 'AI Image',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
